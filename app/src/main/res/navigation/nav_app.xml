@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_app"
+    app:startDestination="@id/galeryHomeFragment">
+
+    <fragment
+        android:id="@+id/galeryHomeFragment"
+        android:name="com.example.appgallery_raphael.presentation.ui.home.GalleryHomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/home_galery_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_filterFragment"
+            app:destination="@id/filterListFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/detailCatFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/filterListFragment"
+        android:name="com.example.appgallery_raphael.presentation.ui.filter.FilterCatsListFragment"
+        android:label=""
+        tools:layout="@layout/filter_list_fragment" />
+    <fragment
+        android:id="@+id/detailCatFragment"
+        android:name="com.example.appgallery_raphael.presentation.ui.details.DetailCatFragment"
+        android:label=""
+        tools:layout="@layout/details_cats_fragment" >
+        <argument
+            android:name="cats"
+            app:argType="com.example.appgallery_raphael.model.Cats" />
+    </fragment>
+</navigation>
