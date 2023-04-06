@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Cats (
-    var id : Int,
-    var name: String,
+    var id : String,
+    var title: String,
     var followers : Int,
     var description: String,
     var image : String,

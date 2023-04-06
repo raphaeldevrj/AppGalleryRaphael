@@ -16,7 +16,7 @@ class DetailCatFragment : Fragment(R.layout.details_cats_fragment) {
 
         val cats = args.cats
 
-        catName.text = cats.name
+        catName.text = cats.title
         followersCats.text = cats.followers.toString()
         descriptionCats.text = cats.description
     }

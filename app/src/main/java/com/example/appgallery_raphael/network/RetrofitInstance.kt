@@ -1,5 +1,6 @@
 package com.example.appgallery_raphael.network
 
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,9 +31,10 @@ object RetrofitInstance {
 
 
     private val retrofit by lazy {
+        val gson = GsonBuilder().serializeNulls().create()
         Retrofit.Builder()
             .baseUrl(" https://api.imgur.com/3/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()
     }

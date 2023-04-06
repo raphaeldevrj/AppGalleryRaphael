@@ -21,5 +21,10 @@ class Repository {
         return RetrofitInstance.apiImgur.getCatsFollowers(followers,page)
     }
 
+    suspend fun searchImages(searchBy: String): CatsList {
+        val result = RetrofitInstance.apiImgur.searchImages(searchBy)
+
+        return result
+    }
 
 }

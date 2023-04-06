@@ -48,7 +48,7 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
             Picasso.get().load(cats.image).into(image_character)
             img_type.text = cats.typeImg
             followers_number.text= cats.followers.toString()
-            name_cats.text= cats.name
+            name_cats.text= cats.title
         }
     }
 

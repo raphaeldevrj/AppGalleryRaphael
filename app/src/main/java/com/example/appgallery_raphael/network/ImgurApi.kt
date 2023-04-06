@@ -28,6 +28,10 @@ interface ImgurApi {
     ): CatsList
 
 
+    @GET("gallery/search")
+    suspend fun searchImages(@Query("q") searchBy: String): CatsList
+
+
 object ApiKeys{
 
     const val CLIENT_ID = "Client-ID ba083072975c41c"

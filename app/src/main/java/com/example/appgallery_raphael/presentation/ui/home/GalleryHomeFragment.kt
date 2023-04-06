@@ -24,9 +24,9 @@ class GalleryHomeFragment : Fragment(R.layout.home_galery_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.listCatsInGallery.observe(viewLifecycleOwner, {
+        viewModel.listCatsInGallery.observe(viewLifecycleOwner) {
             adapter.setCharacters(it)
-        })
+        }
 
         recyclerViewCats.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerViewCats.adapter = adapter
@@ -37,9 +37,9 @@ class GalleryHomeFragment : Fragment(R.layout.home_galery_fragment) {
 
         getNameSearchView()
 
-        viewModel.isFilter.observe(viewLifecycleOwner, {
+        viewModel.isFilter.observe(viewLifecycleOwner) {
             btnReset.visibility = if (it) View.VISIBLE else View.INVISIBLE
-        })
+        }
 
         btnReset.setOnClickListener {
             viewModel.getCats(1)
@@ -63,6 +63,6 @@ class GalleryHomeFragment : Fragment(R.layout.home_galery_fragment) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        viewModel.getCats(1)
+        viewModel.searchImages("cats")
     }
 }
