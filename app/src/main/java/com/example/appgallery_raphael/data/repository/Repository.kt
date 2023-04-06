@@ -1,6 +1,7 @@
 package com.example.appgallery_raphael.data.repository
 
 import com.example.appgallery_raphael.model.CatsList
+import com.example.appgallery_raphael.model.Images
 import com.example.appgallery_raphael.network.RetrofitInstance
 
 class Repository {
@@ -23,6 +24,16 @@ class Repository {
 
     suspend fun searchImages(searchBy: String): CatsList {
         val result = RetrofitInstance.apiImgur.searchImages(searchBy)
+
+        result.data.map { album ->
+            val images : ArrayList<Images> = arrayListOf()
+            if (!album.images.isNullOrEmpty()) {
+                album.images?.filter { it.type == "image/jpeg" || it.type == "image/jpg" }
+                    .let { images.addAll(it ?: arrayListOf()) }
+                album.images = images
+            }
+            album.followers = album.tags.sumOf { it.followers }
+        }
 
         return result
     }

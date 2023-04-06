@@ -11,7 +11,9 @@ import com.example.appgallery_raphael.presentation.ui.home.GalleryHomeFragmentDi
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
+class CatsAdapter (
+    private val itemClick: (item: Cats) -> Unit
+): RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
 
     private var listCats = emptyList<Cats>()
 
@@ -23,9 +25,8 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
     override fun onBindViewHolder(holder: CatsViewHolder, position: Int) {
         holder.bind(listCats[position])
 
-        holder.itemView.setOnClickListener { view ->
-            val action = GalleryHomeFragmentDirections.actionListFragmentToDetailFragment(listCats[position])
-            view.findNavController().navigate(action)
+        holder.itemView.setOnClickListener { _ ->
+            itemClick(listCats[position])
         }
     }
 
@@ -45,8 +46,11 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         var name_cats = itemView.nameCats
 
         fun bind(cats: Cats){
-            Picasso.get().load(cats.image).into(image_character)
-            img_type.text = cats.typeImg
+            if (cats.images?.isNotEmpty() == true) {
+                cats.images?.first()?.link?.let {
+                    Picasso.get().load(it).into(image_character)
+                }
+            }
             followers_number.text= cats.followers.toString()
             name_cats.text= cats.title
         }

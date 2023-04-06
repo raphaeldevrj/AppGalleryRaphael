@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 tools:text="15245" />
         </androidx.cardview.widget.CardView>

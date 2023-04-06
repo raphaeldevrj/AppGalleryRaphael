@@ -27,8 +27,5 @@
         android:name="com.example.appgallery_raphael.presentation.ui.details.DetailCatFragment"
         android:label=""
         tools:layout="@layout/details_cats_fragment" >
-        <argument
-            android:name="cats"
-            app:argType="com.example.appgallery_raphael.model.Cats" />
     </fragment>
 </navigation>

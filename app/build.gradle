@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.demo.android.cassiana.rickandmortycardapp"
+        applicationId "com.example.appgallery_raphael"
         minSdkVersion 22
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 30

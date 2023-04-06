@@ -10,19 +10,21 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.appgallery_raphael.R
 import com.example.appgallery_raphael.data.repository.Repository
+import com.example.appgallery_raphael.model.Cats
 import com.example.appgallery_raphael.presentation.ui.CatsAdapter
 import com.example.appgallery_raphael.presentation.viewmodel.GalleryViewModel
 import com.example.appgallery_raphael.presentation.viewmodel.ViewModelFactory
-import kotlinx.android.synthetic.main.component_btn_filter.*
 import kotlinx.android.synthetic.main.home_galery_fragment.*
 
 class GalleryHomeFragment : Fragment(R.layout.home_galery_fragment) {
 
     private val viewModel: GalleryViewModel by activityViewModels{ ViewModelFactory(Repository()) }
-    var adapter = CatsAdapter()
+    private lateinit var adapter: CatsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        adapter = CatsAdapter(::itemCallback)
 
         viewModel.listCatsInGallery.observe(viewLifecycleOwner) {
             adapter.setCharacters(it)
@@ -47,6 +49,10 @@ class GalleryHomeFragment : Fragment(R.layout.home_galery_fragment) {
         }
     }
 
+    private fun itemCallback(item: Cats) {
+        viewModel.setItem(item)
+        viewModel.showGalleryDetail()
+    }
     private fun getNameSearchView(){
        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
 
@@ -64,5 +70,9 @@ class GalleryHomeFragment : Fragment(R.layout.home_galery_fragment) {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         viewModel.searchImages("cats")
+    }
+
+    companion object {
+        fun newInstance() = GalleryHomeFragment()
     }
 }
