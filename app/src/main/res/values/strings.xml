@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">App Gallery - Raphael</string>
+    <string name="filter">Filter</string>
+    <string name="type_image">Type Image</string>
+    <string name="jpg">JPG</string>
+    <string name="jpeg">JPEG</string>
+    <string name="followers">33333</string>
+    <string name="description_gallery">description_gallery</string>
 </resources>

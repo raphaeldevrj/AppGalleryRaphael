@@ -1,6 +1,6 @@
 package com.example.appgallery_raphael.model
 
-data class Cats (
+data class Gallery (
     var id : String,
     var title: String,
     var followers : Int,

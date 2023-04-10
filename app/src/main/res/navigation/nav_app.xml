@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         tools:layout="@layout/home_galery_fragment" >
         <action
-            android:id="@+id/action_homeFragment_to_filterFragment"
+            android:id="@+id/action_galleryHomeFragment_to_filterListFragment"
             app:destination="@id/filterListFragment" />
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
@@ -19,13 +19,13 @@
     </fragment>
     <dialog
         android:id="@+id/filterListFragment"
-        android:name="com.example.appgallery_raphael.presentation.ui.filter.FilterCatsListFragment"
+        android:name="com.example.appgallery_raphael.presentation.ui.filter.FilterGalleryListFragment"
         android:label=""
-        tools:layout="@layout/filter_list_fragment" />
+        tools:layout="@layout/filter_gallery_list_fragment" />
     <fragment
         android:id="@+id/detailCatFragment"
-        android:name="com.example.appgallery_raphael.presentation.ui.details.DetailCatFragment"
+        android:name="com.example.appgallery_raphael.presentation.ui.details.DetailGalleryFragment"
         android:label=""
-        tools:layout="@layout/details_cats_fragment" >
+        tools:layout="@layout/details_gallery_fragment" >
     </fragment>
 </navigation>

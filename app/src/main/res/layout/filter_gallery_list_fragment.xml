@@ -2,11 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/filterListFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".ui.filter.FilterCatsListFragment">
+    tools:context=".ui.filter.FilterGalleryListFragment"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="56dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Filter"
+            android:text="@string/filter"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -37,7 +41,7 @@
             android:id="@+id/txt_title_episodes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Type Image"
+            android:text="@string/type_image"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,18 +61,25 @@
             app:layout_constraintTop_toTopOf="parent"
             app:singleSelection="true">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_alive"
+            <androidx.appcompat.widget.AppCompatCheckedTextView
+                android:id="@+id/checkbox_jpg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="JPG"
+                android:text="@string/jpg"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:background="@color/white"
                 android:textSize="14sp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_dead"
+            <CheckedTextView
+                android:id="@+id/checkbox_jpeg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="JPEG"
+                android:text="@string/jpeg"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:background="@color/white"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.chip.ChipGroup>
@@ -84,6 +95,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/white"
         android:text="Apply"
+        android:clickable="true"
         android:textColor="@color/black"
         app:backgroundTint="@null" />
 

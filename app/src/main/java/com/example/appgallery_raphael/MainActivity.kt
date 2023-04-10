@@ -2,16 +2,13 @@ package com.example.appgallery_raphael
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.appgallery_raphael.data.repository.Repository
-import com.example.appgallery_raphael.presentation.ui.details.DetailCatFragment
+import com.example.appgallery_raphael.presentation.ui.details.DetailGalleryFragment
+import com.example.appgallery_raphael.presentation.ui.filter.FilterGalleryListFragment
 import com.example.appgallery_raphael.presentation.ui.home.GalleryHomeFragment
-import com.example.appgallery_raphael.presentation.viewmodel.GalleryStateFlow
 import com.example.appgallery_raphael.presentation.viewmodel.GalleryViewModel
 import com.example.appgallery_raphael.presentation.viewmodel.ViewModelFactory
 
@@ -22,14 +19,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         loadObserver()
         viewModel.showGalleryHome()
+        hideToolBar()
+    }
+
+    private fun hideToolBar() {
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        getSupportActionBar()?.hide()
     }
 
     private fun loadObserver() {
         viewModel.state.observe(this) { state ->
             when (state) {
-                GalleryStateFlow.GalleryHomeFlow -> showFragment(GalleryHomeFragment.newInstance())
+                GalleryViewModel.GalleryStateFlow.GalleryHomeFlow -> showFragment(GalleryHomeFragment.newInstance())
+                GalleryViewModel.GalleryStateFlow.GalleryFilterFlow -> showFragment(FilterGalleryListFragment.newInstanceFilter())
                 else -> {
-                    showFragment(DetailCatFragment.newInstance())
+                    showFragment(DetailGalleryFragment.newInstance())
                 }
             }
         }

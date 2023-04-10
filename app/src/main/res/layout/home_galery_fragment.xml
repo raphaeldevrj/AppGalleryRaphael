@@ -7,85 +7,47 @@
     android:background="@color/black">
 
     <TextView
-        android:id="@+id/nameApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Cat Gallery"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="Cats"
+        android:text="Gallery"
         android:textColor="@color/white"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-    <TextView
-        android:id="@+id/btnReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:text="reset"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewCats"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/searchView"
         android:layout_width="331dp"
-        android:layout_height="56dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/background_filter_bar"
         android:clickable="true"
         android:contextClickable="true"
         android:enabled="true"
         android:focusable="true"
-        android:focusableInTouchMode="true"
         android:inputType="textNoSuggestions"
-        android:paddingLeft="40dp"
+        android:paddingLeft="0dp"
         app:layout_constraintEnd_toStartOf="@+id/btnFilter"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nameApp"
-        app:queryHint="type here name cat" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="type here name album" />
 
-    <ImageView
-        android:id="@+id/iconSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/searchView"
-        app:layout_constraintStart_toStartOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="@+id/searchView"
-        app:srcCompat="@drawable/ic_search_24" />
 
     <ImageButton
         android:id="@+id/btnFilter"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:clickable="true"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/background_filter_bar"
+        android:clickable="true"
         android:src="@drawable/ic_filter_list"
         app:layout_constraintBottom_toBottomOf="@+id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
